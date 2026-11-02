@@ -1,0 +1,151 @@
+export const disasterCategories = [
+  { value: 'all', label: 'All scenarios' },
+  { value: 'flood', label: 'Flood' },
+  { value: 'wildfire', label: 'Wildfire' },
+  { value: 'earthquake', label: 'Earthquake' },
+  { value: 'severe-weather', label: 'Severe weather' },
+]
+
+export const disasterScenarios = [
+  {
+    id: 'scenario-flood-01',
+    category: 'flood',
+    categoryLabel: 'Flood',
+    title: 'Rising-water tabletop exercise',
+    severity: 'High',
+    status: 'Scenario preview',
+    center: [30.7415, 76.7821],
+    radius: 760,
+    affectedArea: 'Illustrative 760 m radius around the Chandigarh scenario point',
+    description: 'Practice recognizing rising-water hazards, keeping clear of floodwater, and checking official local guidance.',
+    responseFocus: 'Scenario focus: safe access, household communication, and avoiding water-covered routes.',
+    color: '#38bdf8',
+  },
+  {
+    id: 'scenario-wildfire-01',
+    category: 'wildfire',
+    categoryLabel: 'Wildfire',
+    title: 'Wildland smoke tabletop exercise',
+    severity: 'Critical',
+    status: 'Scenario preview',
+    center: [31.1048, 77.1734],
+    radius: 680,
+    affectedArea: 'Illustrative 680 m radius around the Shimla scenario point',
+    description: 'Practice a smoke-awareness scenario, protecting breathing space, and following any real instructions from local authorities.',
+    responseFocus: 'Scenario focus: move away from visible smoke if safe and monitor official local information.',
+    color: '#fb7185',
+  },
+  {
+    id: 'scenario-earthquake-01',
+    category: 'earthquake',
+    categoryLabel: 'Earthquake',
+    title: 'Ground-shaking preparedness exercise',
+    severity: 'Moderate',
+    status: 'Scenario preview',
+    center: [34.0837, 74.7973],
+    radius: 860,
+    affectedArea: 'Illustrative 860 m radius around the Srinagar scenario point',
+    description: 'Practice protective actions during shaking and post-event awareness without depicting an actual earthquake.',
+    responseFocus: 'Scenario focus: Drop, Cover, and Hold On; then check for hazards and follow trusted official updates.',
+    color: '#c084fc',
+  },
+  {
+    id: 'scenario-weather-01',
+    category: 'severe-weather',
+    categoryLabel: 'Severe weather',
+    title: 'Severe-weather readiness exercise',
+    severity: 'High',
+    status: 'Scenario preview',
+    center: [26.1445, 91.7362],
+    radius: 720,
+    affectedArea: 'Illustrative 720 m radius around the Guwahati scenario point',
+    description: 'Practice identifying a safe indoor place, keeping a way to receive official information, and avoiding flooded routes.',
+    responseFocus: 'Scenario focus: shelter from wind and lightning; use official local alerts for real-time decisions.',
+    color: '#fbbf24',
+  },
+]
+
+export const evacuationChecklist = [
+  'Identify a safe place to shelter or gather using current instructions from local authorities.',
+  'Keep essential medicines, water, documents, and a flashlight ready to take.',
+  'Plan how to reach household members and support anyone who needs help moving.',
+  'Plan for pets, mobility needs, and a backup communication method.',
+  'Check official local evacuation instructions before choosing a route or leaving.',
+]
+
+export const demonstrationFacilities = [
+  {
+    id: 'demo-medical-01',
+    category: 'hospital',
+    name: 'Demo medical facility · sample marker 01',
+    neighborhood: 'Illustrative position · Chandigarh',
+    coordinates: [30.7333, 76.7794],
+    details: 'Demonstration map point only. No facility name, services, hours, capacity, or availability has been verified.',
+    icon: 'medical',
+  },
+  {
+    id: 'demo-medical-02',
+    category: 'hospital',
+    name: 'Demo medical facility · sample marker 02',
+    neighborhood: 'Illustrative position · Dehradun',
+    coordinates: [30.3165, 78.0322],
+    details: 'Demonstration map point only. Not a confirmed hospital or statement of medical service availability.',
+    icon: 'medical',
+  },
+  {
+    id: 'demo-police-01',
+    category: 'police',
+    name: 'Demo police facility · sample marker 01',
+    neighborhood: 'Illustrative position · New Delhi',
+    coordinates: [28.6139, 77.209],
+    details: 'Demonstration map point only. No police station, staffing, operating hours, or service availability has been verified.',
+    icon: 'police',
+  },
+  {
+    id: 'demo-police-02',
+    category: 'police',
+    name: 'Demo police facility · sample marker 02',
+    neighborhood: 'Illustrative position · Guwahati',
+    coordinates: [26.1445, 91.7362],
+    details: 'Demonstration map point only. Not a confirmed police station or public-service location.',
+    icon: 'police',
+  },
+  {
+    id: 'demo-fire-01',
+    category: 'fire',
+    name: 'Demo fire facility · sample marker 01',
+    neighborhood: 'Illustrative position · Shimla',
+    coordinates: [31.1048, 77.1734],
+    details: 'Demonstration map point only. No fire station, response coverage, or operational availability has been verified.',
+    icon: 'fire',
+  },
+  {
+    id: 'demo-fire-02',
+    category: 'fire',
+    name: 'Demo fire facility · sample marker 02',
+    neighborhood: 'Illustrative position · Mumbai',
+    coordinates: [19.076, 72.8777],
+    details: 'Demonstration map point only. Not a confirmed fire station or response-service location.',
+    icon: 'fire',
+  },
+]
+
+export const facilityCategories = [
+  { value: 'all', label: 'All types' },
+  { value: 'hospital', label: 'Hospitals' },
+  { value: 'police', label: 'Police' },
+  { value: 'fire', label: 'Fire stations' },
+]
+
+export function getOpenStreetMapLocationUrl(coordinates) {
+  const [latitude, longitude] = coordinates
+  const zoom = 16
+  return `https://www.openstreetmap.org/?mlat=${encodeURIComponent(latitude)}&mlon=${encodeURIComponent(longitude)}#map=${zoom}/${encodeURIComponent(latitude)}/${encodeURIComponent(longitude)}`
+}
+
+export function getOpenStreetMapDirectionsUrl(coordinates, origin = [30.7333, 76.7794]) {
+  const [startLatitude, startLongitude] = origin
+  const [endLatitude, endLongitude] = coordinates
+  const route = `${startLatitude},${startLongitude};${endLatitude},${endLongitude}`
+  return `https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=${encodeURIComponent(route)}`
+}
